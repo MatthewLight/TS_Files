@@ -8,6 +8,9 @@ export const getCoronaStats = async (req: Request, res: Response): Promise<Respo
     
     return res.json(jsonData);
   } catch (error) {
-    return res.json({ msg: 'Error' });
+    if(res.status(500)) {
+      return res.status(500).json({ msg: 'Error 500' });
+    }
+    return res.json({ msg: 'Unknown has error occured' });
   }
 };
